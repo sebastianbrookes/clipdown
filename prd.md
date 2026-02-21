@@ -2,7 +2,7 @@
 
 ## Overview
 
-A lightweight Python script that converts screenshot/image content on the macOS clipboard into clean markdown text using Google's Gemini 2.0 Flash API, then writes the resulting markdown back to the clipboard. Designed to be triggered via a macOS Shortcut bound to `Ctrl+Shift+M`.
+A lightweight Python script that converts screenshot/image content on the macOS clipboard into clean markdown text using Google's Gemini 2.5 Flash API, then writes the resulting markdown back to the clipboard. Designed to be triggered via a macOS Shortcut bound to `Ctrl+Shift+M`.
 
 ## Problem
 
@@ -43,7 +43,7 @@ The entire process should feel near-instant (1-3 seconds depending on API latenc
    - Use `pngpaste` via `subprocess.run()` to save clipboard contents to a temp `.png` file
    - If `pngpaste` exits with a non-zero code (no image on clipboard), send an error notification and exit gracefully
 
-2. **Send image to Gemini 2.0 Flash:**
+2. **Send image to Gemini 2.5 Flash:**
    - Read the temp image file as bytes
    - Use the `google-genai` SDK to call `gemini-2.0-flash` (NOT gemini-1.5 — use the latest 2.0 flash model)
    - Use the following system prompt:
