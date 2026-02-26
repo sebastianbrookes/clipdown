@@ -2,7 +2,7 @@
 
 A macOS utility that converts clipboard images to markdown using Google Gemini 2.5 Flash.
 
-Copy a screenshot, press **Ctrl+Shift+M**, and paste clean markdown.
+Copy a screenshot, press **Ctrl+Option+M**, and paste clean markdown.
 
 ## How it works
 
