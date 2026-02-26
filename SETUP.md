@@ -44,6 +44,6 @@ Edit `.env` and replace `your_api_key_here` with your actual [Google AI Studio](
 2. Go to **Keyboard** > **Keyboard Shortcuts...**
 3. Select **Services** (or **App Shortcuts** depending on macOS version) in the left sidebar
 4. Find **"Clipboard to Markdown"** under **General**
-5. Double-click the shortcut column and press **Ctrl+Shift+M**
+5. Double-click the shortcut column and press **Ctrl+Option+M**
 
-You can now copy any image to your clipboard and press **Ctrl+Shift+M** to convert it to markdown.
+You can now copy any image to your clipboard and press **Ctrl+Option+M** to convert it to markdown.
