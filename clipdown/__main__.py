@@ -3,18 +3,18 @@
 import sys
 
 from .clipboard import cleanup_temp_file, extract_clipboard_image, write_to_clipboard
-from .config import NOTIFICATION_TITLE, load_api_key
-from .gemini import convert_image_to_markdown
+from .config import NOTIFICATION_TITLE, load_config
 from .notify import notify
+from .openrouter import convert_image_to_markdown
 
 
 def main() -> None:
     """Orchestrate the clipboard-to-markdown pipeline."""
     image_path = None
     try:
-        api_key = load_api_key()
+        api_key, model = load_config()
         image_path = extract_clipboard_image()
-        markdown = convert_image_to_markdown(image_path, api_key)
+        markdown = convert_image_to_markdown(image_path, api_key, model)
         write_to_clipboard(markdown)
         notify(NOTIFICATION_TITLE, "Markdown copied to clipboard \u2713")
 

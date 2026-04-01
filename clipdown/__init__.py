@@ -1,1 +1,1 @@
-"""Clipdown — convert clipboard images to markdown via Google Gemini."""
+"""Clipdown — convert clipboard images to markdown via OpenRouter."""

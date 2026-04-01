@@ -4,6 +4,8 @@ import os
 
 NOTIFICATION_TITLE = "Clipboard \u2192 MD"
 
+DEFAULT_MODEL = "google/gemini-2.5-flash"
+
 SYSTEM_PROMPT = """\
 Convert this image to clean, well-structured markdown.
 Rules:
@@ -15,11 +17,13 @@ Rules:
 - Be precise with the text content \u2014 do not paraphrase or summarize"""
 
 
-def load_api_key() -> str:
-    """Load GEMINI_API_KEY from env var or .env file in project directory."""
-    key = os.environ.get("GEMINI_API_KEY")
-    if key:
-        return key
+def load_config() -> tuple[str, str]:
+    """Load OpenRouter API key and model from env vars or .env file.
+
+    Returns (api_key, model) tuple.
+    """
+    api_key = os.environ.get("OPENROUTER_API_KEY")
+    model = os.environ.get("OPENROUTER_MODEL")
 
     env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".env")
     if os.path.exists(env_path):
@@ -28,7 +32,13 @@ def load_api_key() -> str:
                 line = line.strip()
                 if line and not line.startswith("#") and "=" in line:
                     k, v = line.split("=", 1)
-                    if k.strip() == "GEMINI_API_KEY":
-                        return v.strip()
+                    k, v = k.strip(), v.strip()
+                    if k == "OPENROUTER_API_KEY" and not api_key:
+                        api_key = v
+                    elif k == "OPENROUTER_MODEL" and not model:
+                        model = v
 
-    raise EnvironmentError("GEMINI_API_KEY not configured \u2014 check .env file")
+    if not api_key:
+        raise EnvironmentError("OPENROUTER_API_KEY not configured \u2014 check .env file")
+
+    return api_key, model or DEFAULT_MODEL
