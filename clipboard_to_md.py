@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Convert clipboard images to markdown via Google Gemini 2.5 Flash.
+"""Convert clipboard images to markdown via OpenRouter.
 
 This is the original entry point. You can also run: python -m clipdown
 """
